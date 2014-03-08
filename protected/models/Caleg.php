@@ -7,8 +7,7 @@
  * @property string $id
  * @property string $user_id
  * @property integer $is_read
- * @property string $unlike_count
- * @property string $like_count
+ * @property integer $rate
  *
  * The followings are the available model relations:
  * @property User $user
@@ -32,12 +31,12 @@ class Caleg extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, user_id', 'required'),
-			array('is_read', 'numerical', 'integerOnly'=>true),
+			array('is_read, rate', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>128),
-			array('user_id, unlike_count, like_count', 'length', 'max'=>10),
+			array('user_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, is_read, unlike_count, like_count', 'safe', 'on'=>'search'),
+			array('id, user_id, is_read, rate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,8 +61,7 @@ class Caleg extends CActiveRecord
 			'id' => 'ID',
 			'user_id' => 'User',
 			'is_read' => 'Is Read',
-			'unlike_count' => 'Unlike Count',
-			'like_count' => 'Like Count',
+			'rate' => 'Rate',
 		);
 	}
 
@@ -88,8 +86,7 @@ class Caleg extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('user_id',$this->user_id,true);
 		$criteria->compare('is_read',$this->is_read);
-		$criteria->compare('unlike_count',$this->unlike_count,true);
-		$criteria->compare('like_count',$this->like_count,true);
+		$criteria->compare('rate',$this->rate);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
