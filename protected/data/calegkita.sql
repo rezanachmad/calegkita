@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 08, 2014 at 09:47 PM
+-- Generation Time: Mar 08, 2014 at 10:12 PM
 -- Server version: 5.5.35
 -- PHP Version: 5.5.9-1+sury.org~precise+1
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `dapil` (
   `id` varchar(128) NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `lembaga` varchar(10) NOT NULL,
-  `count` int(10) unsigned NOT NULL,
+  `count` int(10) unsigned NOT NULL DEFAULT '0',
   `count_read` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
@@ -68,13 +68,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `email`, `name`, `password`, `NIK`, `geolocation`) VALUES
-(1, 'rezanachmad@gmail.com', 'Rezan Achmad', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b', NULL, NULL);
 
 --
 -- Constraints for dumped tables

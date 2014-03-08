@@ -31,7 +31,7 @@ class Dapil extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, user_id, lembaga, count', 'required'),
+			array('id, user_id, lembaga', 'required'),
 			array('id', 'length', 'max'=>128),
 			array('user_id, lembaga, count, count_read', 'length', 'max'=>10),
 			// The following rule is used by search().
