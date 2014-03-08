@@ -20,6 +20,9 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwx2_GlAXTtijW98xK-H0QhPBTMmdTbPU&sensor=true"></script>
     </head>
 
     <body>
@@ -63,7 +66,6 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"></script>
     </body>
 </html>
