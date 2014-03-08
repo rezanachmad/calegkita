@@ -9,6 +9,7 @@
  * @property string $name
  * @property string $password
  * @property string $NIK
+ * @property string $geolocation
  *
  * The followings are the available model relations:
  * @property Caleg[] $calegs
@@ -36,9 +37,10 @@ class User extends CActiveRecord {
             array('email', 'unique'),
             array('repassword', 'compare', 'compareAttribute' => 'password', 'on' => 'register'),
             array('email, name, password, NIK', 'length', 'max' => 128),
+            array('geolocation', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, email, name, password, NIK', 'safe', 'on' => 'search'),
+            array('id, email, name, password, NIK, geolocation', 'safe', 'on' => 'search'),
         );
     }
 
@@ -63,7 +65,8 @@ class User extends CActiveRecord {
             'email' => 'Email',
             'name' => 'Name',
             'password' => 'Password',
-            'NIK' => 'Nik',
+            'NIK' => 'NIK',
+            'geolocation' => 'Geolocation',
         );
     }
 
