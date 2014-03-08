@@ -36,6 +36,6 @@ $this->pageTitle = Yii::app()->name;
     <hr>
 
     <footer>
-        <p><?php echo Yii::app()->name ?> &copy; Company 2014</p>
+        <p>&copy; <?php echo Yii::app()->name ?> 2014</p>
     </footer>
 </div> <!-- /container -->
