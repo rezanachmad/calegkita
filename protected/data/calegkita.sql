@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 09, 2014 at 02:47 AM
+-- Generation Time: Mar 09, 2014 at 05:43 AM
 -- Server version: 5.5.35
 -- PHP Version: 5.5.9-1+sury.org~precise+1
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `caleg` (
   `user_id` int(10) unsigned NOT NULL,
   `is_read` tinyint(1) NOT NULL DEFAULT '0',
   `rate` smallint(6) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`,`user_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `dapil` (
   `nama` varchar(128) NOT NULL,
   `count` int(10) unsigned NOT NULL DEFAULT '0',
   `count_read` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`,`user_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
