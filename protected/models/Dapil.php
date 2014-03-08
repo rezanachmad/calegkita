@@ -7,6 +7,7 @@
  * @property string $id
  * @property string $user_id
  * @property string $lembaga
+ * @property string $nama
  * @property string $count
  * @property string $count_read
  *
@@ -31,12 +32,12 @@ class Dapil extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, user_id, lembaga', 'required'),
-			array('id', 'length', 'max'=>128),
+			array('id, user_id, lembaga, nama', 'required'),
+			array('id, nama', 'length', 'max'=>128),
 			array('user_id, lembaga, count, count_read', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, lembaga, count, count_read', 'safe', 'on'=>'search'),
+			array('id, user_id, lembaga, nama, count, count_read', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,6 +62,7 @@ class Dapil extends CActiveRecord
 			'id' => 'ID',
 			'user_id' => 'User',
 			'lembaga' => 'Lembaga',
+			'nama' => 'Nama',
 			'count' => 'Count',
 			'count_read' => 'Count Read',
 		);
@@ -87,6 +89,7 @@ class Dapil extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('user_id',$this->user_id,true);
 		$criteria->compare('lembaga',$this->lembaga,true);
+		$criteria->compare('nama',$this->nama,true);
 		$criteria->compare('count',$this->count,true);
 		$criteria->compare('count_read',$this->count_read,true);
 
@@ -105,4 +108,18 @@ class Dapil extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+    /**
+     * 
+     * @param string $userId
+     * @return Dapil[]
+     */
+    public function findAllByUserId($userId) {
+        $criteria = new CDbCriteria();
+        $criteria->addCondition("user_id = :user_id");
+        $criteria->order = 'lembaga ASC';
+        $criteria->params = array(':user_id' => $userId);
+        return Dapil::model()->findAll($criteria);
+    }
+
 }

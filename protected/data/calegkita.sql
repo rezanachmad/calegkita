@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 09, 2014 at 01:22 AM
+-- Generation Time: Mar 09, 2014 at 02:47 AM
 -- Server version: 5.5.35
 -- PHP Version: 5.5.9-1+sury.org~precise+1
 
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `dapil` (
   `id` varchar(128) NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `lembaga` varchar(10) NOT NULL,
+  `nama` varchar(128) NOT NULL,
   `count` int(10) unsigned NOT NULL DEFAULT '0',
   `count_read` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
