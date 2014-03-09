@@ -62,29 +62,34 @@
                         <span class="label label-info"><?php echo Helper::getStandForOfGender($caleg->jenis_kelamin) ?></span>
                         <span class="label label-info"><?php echo $caleg->agama ?></span>
                         <span class="label label-info"><?php echo $caleg->status_perkawinan ?></span>
-                        <br />
-                        <span class="label label-default">Domisili:</span>
-                        <span class="label label-info"><?php echo $caleg->kelurahan_tinggal ?></span>
-                        <span class="label label-info"><?php echo $caleg->kecamatan_tinggal ?></span>
-                        <span class="label label-info"><?php echo $caleg->kab_kota_tinggal ?></span>
                         <br/>
                         <br/>
                         <table>
                             <tr>
+                                <td>Domisili</td>
+                                <td style="padding-left: 3px; font-size: 80%">
+                                    <?php
+                                    $domisili = "$caleg->kelurahan_tinggal, $caleg->kecamatan_tinggal, $caleg->kab_kota_tinggal";
+                                    echo trim($domisili, ', ');
+                                    ?>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Pendidikan</td>
-                                <td class="pendidikan" style="padding-left: 3px">
+                                <td class="pendidikan" style="padding-left: 3px; font-size: 80%">
                                     <span class="glyphicon glyphicon-refresh"></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Pekerjaan</td>
-                                <td class="pekerjaan" style="padding-left: 3px">
+                                <td class="pekerjaan" style="padding-left: 3px; font-size: 80%">
                                     <span class="glyphicon glyphicon-refresh"></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Organisasi</td>
-                                <td class="organisasi" style="padding-left: 3px">
+                                <td class="organisasi" style="padding-left: 3px; font-size: 80%">
                                     <span class="glyphicon glyphicon-refresh"></span>
                                 </td>
                             </tr>
