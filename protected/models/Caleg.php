@@ -103,4 +103,39 @@ class Caleg extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        public static function isRead($userId, $calegId) {
+            return self::model()->findByAttributes(array(
+                'user_id' => $userId,
+                'id' => $calegId,
+                'is_read' => 1,
+            ));
+        }
+        
+        public static function countRead($userId, $lembagaId) {
+            if (strlen($lembagaId) == 2) {
+                $lembagaId = "{$lembagaId}00-00-0000";
+            }
+            
+            $crit = new CDbCriteria();
+            $crit->condition = 'user_id = :user_id AND is_read = :is_read AND id LIKE :id';
+            $crit->params = array(
+                ':user_id' => $userId,
+                ':is_read' => 1,
+                ':id' => "$lembagaId%",
+            );
+            return self::model()->count($crit);
+        }
+        
+        public static function getRate($userId, $calegId) {
+            $model = self::model()->findByAttributes(array(
+                'user_id' => $userId,
+                'id' => $calegId,
+            ));
+            if ($model != NULL) {
+                return $model->rate;
+            } else {
+                return 0;
+            }
+        }
 }

@@ -29,17 +29,31 @@ class DapilController extends Controller {
             // Delete all dapils
             Dapil::model()->deleteAllByAttributes(array('user_id' => $userId));
             
+            // Delete all calegs
+            Caleg::model()->deleteAllByAttributes(array('user_id' => $userId));
+            
             // Insert new dapils
             $areas = $result->data->results->areas;
             foreach ($areas as $area) {
                 $dapil = new Dapil();
                 $dapil->id = $area->id;
                 $dapil->user_id = $userId;
+                $dapil->nama = $area->nama;
                 $dapil->lembaga = $area->lembaga;
+                
+                // Get count
+                $sDapil = $dapil->id;
+                if (strlen($sDapil) == 2) {
+                    $sDapil = "{$sDapil}00-00-0000";
+                }
+                $response = $caller->call(APICaller::CANDIDATE_API_CALEG, array('dapil' => $sDapil));
+                $count = $response->data->results->total;
+                $dapil->count = $count;
+                
                 $dapil->save();
             }
             
-            // redirect to board
+            $this->redirect(array('board/index'));
         }
         
         $this->render('index');
